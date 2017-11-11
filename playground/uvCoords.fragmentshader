@@ -1,0 +1,26 @@
+#version 330 core
+
+// Interpolated values from the vertex shaders
+in vec2 UV;
+
+// Ouput data
+out vec4 color;
+
+void main(){
+  
+  float res = 0.02;
+
+  float x_rem = mod(UV.x, res);
+  x_rem = min (x_rem, res - x_rem);  
+  float alpha_x = x_rem / (res / 50);
+  
+  float y_rem = mod(UV.y, res);
+  y_rem = min (y_rem, res - y_rem);  
+  float alpha_y = y_rem / (res / 50);
+  
+  float alpha = min(alpha_y, alpha_x);
+  alpha = 1 - min(alpha, 1);  
+  
+  color.rgb = alpha * vec3(0,0,1) + (1-alpha) * vec3(1,1,1);
+  color.a = 0.5;
+}

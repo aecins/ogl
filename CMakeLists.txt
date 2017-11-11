@@ -1,5 +1,5 @@
 # CMake entry point
-cmake_minimum_required (VERSION 3.0)
+cmake_minimum_required (VERSION 2.8)
 project (Tutorials)
 
 find_package(OpenGL REQUIRED)
@@ -517,6 +517,14 @@ add_executable(playground
 	playground/playground.cpp
 	common/shader.cpp
 	common/shader.hpp
+  common/texture.cpp
+  common/texture.hpp
+  common/controls.cpp
+  common/controls.hpp
+  common/objloader.cpp
+  common/objloader.hpp
+  common/vboindexer.cpp
+  common/vboindexer.hpp
 )
 target_link_libraries(playground
 	${ALL_LIBS}
